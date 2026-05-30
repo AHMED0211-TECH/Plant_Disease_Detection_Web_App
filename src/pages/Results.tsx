@@ -1,19 +1,59 @@
-import { useParams, Link, useNavigate,useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle, AlertTriangle, ScanLine, Shield, Pill } from "lucide-react";
+import { ArrowLeft, CheckCircle, AlertTriangle, ScanLine, Shield, Pill, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DashboardLayout } from "@/components/DashboardLayout";
 import { useAuth } from "@/contexts/AuthContext";
-import { getScanHistory } from "@/lib/mockData";
+import { supabase } from "@/lib/supabase";
 
 function ResultsContent() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const result = location.state?.result;
-  const image = location.state?.image;
+  const [dbResult, setDbResult] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+
+  const result = location.state?.result || dbResult?.disease_name;
+  const image = location.state?.image || dbResult?.image_url;
+
+  useEffect(() => {
+    async function fetchScan() {
+      if (!id || location.state?.result) return;
+      setLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from("scan_history")
+          .select("*")
+          .eq("id", id)
+          .single();
+
+        if (error) {
+          console.error("Error fetching scan from database:", error);
+        } else if (data) {
+          setDbResult(data);
+        }
+      } catch (err) {
+        console.error("Failed to query scan:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchScan();
+  }, [id, location.state]);
 
   console.log("Result:", result); // DEBUG
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-32">
+        <Loader2 className="h-10 w-10 text-primary animate-spin mb-4" />
+        <p className="text-sm text-muted-foreground">Loading analysis results...</p>
+      </div>
+    );
+  }
 
   if (!result) {
     return (
@@ -49,7 +89,7 @@ function ResultsContent() {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="rounded-xl overflow-hidden border shadow-card"
+          className="rounded-xl overflow-hidden border shadow-card bg-muted/5"
         >
           {image && (
             <img
@@ -86,6 +126,7 @@ function ResultsContent() {
     </div>
   );
 }
+
 export default function Results() {
   const { isAuthenticated } = useAuth();
   if (!isAuthenticated) {

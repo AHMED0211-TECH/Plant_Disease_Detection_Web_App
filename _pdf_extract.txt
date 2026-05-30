@@ -1,0 +1,1613 @@
+===== PAGE 1 =====
+THE NEW COLLEGE 
+(AN AUTONOMOUS INSTITUTION TO THE UNIVERSITY OF MADRAS) (ACCREDITED BY NAAC 
+WITH 'A++' GRADE OF 3.61/4 IN THE 4th CYCLE) Sponsored by: THE MUSLIM EDUCATIONAL 
+ASSOCIATION OF SOUTHERN INDIA (MEASI) 
+ 
+Department of Computer Applications 
+ 
+ 
+BILLIT – BILLING MANAGEMENT SYSTEM 
+A desertion submitted in partial fulfillment of the requirements for the award of degree. 
+ 
+BACHELOR OF COMPUTER APPLICATIONS 
+By 
+MOHAMED ARHAM M.E 
+ REG. NO: 2313181033147 
+Under the Guidance 
+of 
+ Dr. MOHAMED SUHAIL M 
+Assistant Professor 
+
+
+===== PAGE 2 =====
+THE NEW COLLEGE 
+(AN AUTONOMOUS INSTITUTION TO THE UNIVERSITY OF MADRAS) (ACCREDITED BY NAAC 
+WITH 'A++' GRADE OF 3.61/4 IN THE 4th CYCLE) Sponsored by: THE MUSLIM EDUCATIONAL 
+ASSOCIATION OF SOUTHERN INDIA (MEASI) 
+Department of Computer Applications 
+ 
+BONAFIDE CERTIFICATE 
+This is to certify that the project work entitled  BILLIT – BILLING MANAGEMENT SYSTEM is 
+a bonafide record work done by MOHAMED ARHAM M.E , Reg. No: 2313181033147 in partial 
+fulfillment of the requirement for the award of the Degree of Bachelor of Computer Applications. 
+ 
+ 
+ 
+Project Guide                                                                                       Head of the Department 
+ 
+ 
+Submitted for the Viva Voce Examination held on…………………at The New College, Chennai-14 
+ 
+ 
+ 
+Internal Examiner                                                                                            External Examiner 
+
+
+===== PAGE 3 =====
+ACKNOWLEDGEMENT 
+ 
+“In the name of Allah, the most Beneficent, the most Merciful”  
+ 
+ 
+I would like to thank our Principal Dr. M. ASRAR SHERIFF, M.Sc., M.Phil., Ph.D. for his support 
+in my entire project work. 
+ 
+I also thank Prof. A. S. MOHAMED HAMSA M.C.A., M.Phil. Head of the Department (Bachelor 
+of Computer Applications), for his guidance and support to complete this project. 
+ 
+I am extremely grateful to my project guide , Dr. MOHAMED SUHAIL M, Assistant Professor, 
+Bachelor of Computer Applications, for suggesting me and guiding me at the right time and share 
+the discussions on very useful topic needed in the course of the work. 
+ 
+I am very grateful to all the faculty members of Department of Computer Applications. My 
+heartfelt thanks goes to my parents and friends who encouraged me to do this mini project, and only 
+because of their Best wishes and invaluable help, this project is seeing the light of the day. 
+ 
+ 
+ 
+ 
+MOHAMED ARHAM M.E
+
+===== PAGE 4 =====
+1 
+ 
+ 
+INDEX 
+ 
+ S. NO. TITLE PAGE NO. 
+ 
+PROJECT SUMMARY 3 
+ 
+ABSTRACT 4 
+1 CHAPTER 1 – INTRODUCTION 5 
+ 
+1.1 Introduction to the Project 6 
+ 
+1.2 System Specification 7 
+ 
+1.2.1 Hardware Configuration 8 
+ 
+1.2.2 Software Specification 8 
+2 CHAPTER 2 – SYSTEM STUDY 9 
+ 
+2.1 Existing System 10 
+ 
+2.2 Drawbacks of Existing System 10 
+ 
+2.3 Proposed System 11 
+ 
+2.4 Advantages of Proposed System 11 
+3 CHAPTER 3 – SYSTEM DESIGN 
+AND DEVELOPMENT 
+12 
+ 
+3.1 File Design 13 
+ 
+3.2 Input Design 14 
+ 
+3.3 Output Design 14 
+
+===== PAGE 5 =====
+2 
+ 
+S. NO. TITLE PAGE NO. 
+ 
+3.4 Database Design 15 
+ 
+3.5 System Development 15 
+ 
+3.5.1 Description of Modules 16 
+4 CHAPTER 4 – TESTING AND 
+IMPLEMENTATION 
+17 
+ 
+4.1 System Testing 18 
+ 
+4.2 Implementation 19 
+5 CHAPTER 5 – CONCLUSION 20 
+ 
+5.1 Future Enhancements 22 
+6 BIBLIOGRAPHY 23 
+7 APPENDICES 23 
+ DATA FLOW DIAGRAM (DFD) 
+ 
+24 
+ DATABASE TABLE STRUCTURE 24 
+ CODE SNIPPETS 
+ 
+26 
+                 SCREENSHOTS 
+ 
+47 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 6 =====
+3 
+ 
+BILLIT – Billing Management System  
+The BILLIT system is a web -based billing application developed to overcome the 
+limitations of traditional manual billing methods. It provides a centralized, automated, and 
+user-friendly platform for efficiently managing billing operations. 
+A key achievement of the system is the automation of invoice generation and billing 
+calculations, including totals, GST, and discounts. This ensures accuracy, consistency, and 
+significantly reduces human errors. The use of a structured database enables efficient 
+storage and retrieval of customer, product, and invoice data, enhancing overall data 
+management. 
+The application is built using Django as the backend framework to handle business logic 
+and data processing, while HTML, CSS, and JavaScript are used to design an interactive 
+and responsive user interface. MySQL serves as the database management system, 
+ensuring reliable and scalable data storage. 
+Additionally, the system incorporates proper input validation to prevent incorrect or 
+incomplete data entry. Comprehensive testing has been conducted to ensure all 
+functionalities operate correctly and the system performs reliably under d ifferent 
+conditions. 
+The BILLIT system is designed with scalability and flexibility in mind, allowing it to be 
+adapted for different types of businesses such as retail shops, small enterprises, and service 
+providers. The modular architecture of the applica tion makes it easy to extend with 
+additional features like report generation, user authentication, and cloud-based deployment 
+in the future. 
+Furthermore, the project enhances productivity by reducing manual workload and 
+improving processing speed. By digit izing billing operations, it enables better record 
+maintenance, quick access to transaction history, and improved decision-making. Overall, 
+the BILLIT project effectively combines modern web technologies with essential billing 
+functionalities to deliver a practical, accurate, and efficient solution suitable for real-world 
+business applications. 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 7 =====
+4 
+ 
+ABSTRACT 
+ 
+BILLIT – Billing Management System  is a comprehensive web -based application 
+developed using modern technologies such as Django for backend development, 
+HTML, CSS, and JavaScript for frontend design, and MySQL as the database 
+management system. The primary objective of this project is to design and implement 
+an efficient, reliable, and user -friendly system that automates the entire billing 
+process, including invoice generation, customer data management, and product 
+handling. The system is specifically developed to overcome the limitations of  
+traditional manual billing systems, which are often time-consuming, prone to human 
+errors, and inefficient in maintaining large volumes of data. 
+In the existing manual systems, billing operations involve significant paperwork, 
+repetitive calculations, and  difficulties in maintaining accurate records. These 
+challenges can lead to errors in billing, loss of important data, and delays in 
+processing transactions. To address these issues, the BILLIT system provides a digital 
+solution that simplifies and streaml ines billing operations through automation and 
+efficient data handling. The system enables users to enter customer details, select 
+products, specify quantities, and automatically generate invoices with accurate 
+calculations of totals, taxes such as GST, and discounts. 
+The application is designed with a user -friendly and intuitive interface that ensures 
+ease of use, even for users with basic computer knowledge. It supports real-time data 
+processing and allows users to quickly generate and manage invoices wit hout any 
+complexity. All the data entered into the system is securely stored in the MySQL 
+database, ensuring data integrity, consistency, and easy retrieval whenever required. 
+The system also maintains proper records of transactions, which can be used for 
+reporting, auditing, and future reference. 
+In conclusion, the BILLIT – Billing Management System demonstrates the effective 
+use of modern web technologies in solving real-world business problems. It provides 
+a reliable, secure, and efficient solution for m anaging billing operations, making it 
+highly suitable for small and medium -sized businesses. The project highlights the 
+importance of automation in improving accuracy, efficiency, and overall system 
+performance in today’s digital environment. 
+ 
+ 
+ 
+
+===== PAGE 8 =====
+5 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+CHAPTER – 1 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 9 =====
+6 
+ 
+1.1 INTRODUCTION  
+ 
+In today’s fast -paced digital world, businesses require efficient and reliable systems to 
+manage their daily operations. One of the most critical aspects of any business is the billing 
+process, which involves generating invoices, managing customer information, and 
+maintaining accurate transaction records. Traditional billing methods, which rely on 
+manual calculations and paper-based records, are often time-consuming, error-prone, and 
+difficult to maintain. Thes e challenges highlight the need for an automated and efficient 
+billing solution. 
+BILLIT – Billing Management System is a web -based application developed to simplify 
+and automate the billing process using modern web technologies. The system is built using 
+Django for backend development, along with HTML, CSS, and JavaScript for designing 
+an interactive and user-friendly frontend interface. MySQL is used as the database to store 
+and manage data efficiently. The primary aim of this project is to replace manual billing 
+systems with a digital platform that ensures speed, accuracy, and reliability. 
+The BILLIT system allows users to easily create invoices by entering customer details, 
+selecting products, specifying quantities, and generating bills automatically. The  system 
+performs real -time calculations for totals, taxes such as GST, and discounts, thereby 
+minimizing human errors. It also provides features for storing customer and transaction 
+data securely, which can be accessed and managed whenever required. 
+In addition to improving accuracy, the system significantly reduces paperwork and saves 
+time, making it highly beneficial for small and medium-sized businesses. The user-friendly 
+interface ensures that even individuals with basic computer knowledge can operate t he 
+system without difficulty. Furthermore, the system is designed to be scalable and can be 
+enhanced with additional features such as report generation, mobile compatibility, and 
+online payment integration. 
+Overall, the BILLIT – Billing Management System p rovides an effective and reliable 
+solution for managing billing operations. It demonstrates the practical application of 
+modern web technologies in solving real -world business problems and improving 
+operational efficiency. 
+ 
+ 
+ 
+ 
+
+===== PAGE 10 =====
+7 
+ 
+1.2 SYSTEM SPECIFICATION 
+ 
+The system specification serves as the foundational blueprint for the BILLIT – Billing 
+Management System, defining the technical architecture, operational environment, and 
+performance requirements necessary to ensure an efficient, reliable, and scalable web-
+based billing solution. In today’s digital business environment, a well -defined system 
+specification is not limited to listing hardware and software components, but also focuses 
+on achieving optimal performance, data integrity, and seamless user interaction. BILLIT is 
+designed as a full -stack web application using Django, HTML, CSS, JavaScript, and 
+MySQL, ensuring a robust and efficient billing ecosystem. 
+ 
+ARCHITECTURAL PHILOSOPHY AND ACCESSIBILITY 
+A core principle of the BILLIT system is to provide a s imple, accessible, and efficient 
+billing solution that can be used across different platforms without requiring specialized 
+hardware or software. The system follows a Web-Based Client -Server Architecture, 
+where the frontend interface is accessed through a web browser, and the backend 
+processing is handled by the Django server. 
+This architecture ensures that users can access the system from any device with an internet 
+connection, regardless of its processing power. The system adopts a Thin-Client 
+Approach, where the browser is responsible for displaying the user interface, while all 
+business logic, calculations, and data processing are handled on the server side. This 
+reduces the computational load on the client device and ensures consistent performance 
+across different platforms. 
+ 
+OPTIMIZATION FOR WEB-BASED OPERATIONS 
+The BILLIT system is optimized to handle billing operations efficiently while maintaining 
+data accuracy and security. The system is designed with the following key optimizations: 
+• Secure Data H andling: The system ensures safe data transmission between the client 
+and server using secure protocols, protecting sensitive information such as customer details 
+and billing records. 
+• Automated Calculations:  The backend logic is optimized to perform real -time 
+calculations for totals, GST, and discounts, reducing manual errors and improving 
+efficiency. 
+
+===== PAGE 11 =====
+8 
+ 
+• Efficient Data Management:  The MySQL database is structured to handle large 
+volumes of billing data with proper indexing and relationships, ensuring fast data retrieval 
+and storage. 
+• Scalable Design: The system is designed in a modular way, allowing easy integration of 
+additional features such as report generation, payment gateways, and mobile compatibility 
+in the future. 
+ 
+1.2.1 HARDWARE CONFIGURATION 
+The hardware requirements for the BILLIT system are minimal, as it is a web -based 
+application that can run on standard computing devices. 
+•  Processor: Intel Core i3 or equivalent 
+• Memory (RAM): Minimum 4GB (8GB recommended) 
+• Hard Disk: 256GB or higher 
+• Monitor: Standard display (1366×768 resolution or higher) 
+• Input Devices: Keyboard and Mouse 
+ 
+1.2.2 SOFTWARE SPECIFICATION 
+The software stack of BILLIT is designed to provide a stable, secure, and user -friendly 
+environment for billing operations. 
+• Operating System: Windows, Linux, or macOS 
+• Frontend: HTML, CSS, JavaScript 
+• Backend: Python (Django Framework) 
+• Database: MySQL 
+• Web Browser: Google Chrome, Microsoft Edge, or any modern browser 
+• Development Tools: Visual Studio Code  
+• Security: Django Authentication System for secure login and data protection 
+• Deployment: Localhost  
+ 
+ 
+
+===== PAGE 12 =====
+9 
+ 
+ 
+ 
+ 
+ 
+ 
+CHAPTER – 2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 13 =====
+10 
+ 
+2. SYSTEM STUDY 
+The system study is a crucial phase in the development of the BILLIT – Billing 
+Management System, as it involves a detailed analysis of the existing billing processes and 
+the identification of their limitations. This phase helps in understanding the operational 
+challenges faced in traditional systems and provides a foundation for designing an efficient 
+and automated solution. T he study focuses on evaluating current practices, identifying 
+inefficiencies, and proposing a system that improves accuracy, speed, and data 
+management. 
+ 
+2.1 EXISTING SYSTEM 
+In many small and medium -scale businesses, billing operations are primarily carried out 
+using manual methods or basic digital tools such as spreadsheets. These traditional systems 
+depend heavily on human effort for performing calculations, maintaining reco rds, and 
+generating invoices. As a result, they often lack efficiency, consistency, and reliability. The 
+absence of automation in such systems increases the workload on employees and makes 
+the entire billing process slow and labor -intensive. Moreover, manual handling of billing 
+activities limits the ability of businesses to scale their operations effectively, especially 
+when dealing with a large number of transactions on a daily basis. 
+Manual billing systems typically involve maintaining physical records su ch as paper 
+invoices, ledgers, or simple electronic files. Over time, managing these records becomes 
+increasingly difficult, as they are prone to misplacement, damage, and disorganization. 
+Calculations for totals, taxes such as GST, and discounts are perfo rmed manually, which 
+significantly increases the likelihood of human errors. Even a small mistake in calculation 
+can lead to incorrect billing, affecting both customer satisfaction and business credibility. 
+In addition, retrieving past records is a time -consuming process, as it often requires 
+searching through large volumes of data. 
+ 
+2.2 DRAWBACKS OF EXISTING SYSTEM 
+The existing billing methods suffer from several limitations, including: 
+• High chances of human error in calculations 
+• Time-consuming billing and record management 
+• Difficulty in maintaining and retrieving data 
+• Lack of proper data security 
+
+===== PAGE 14 =====
+11 
+ 
+• Increased paperwork and storage issues 
+• No real-time processing or automation 
+These drawbacks highlight the need for a more efficient and automated system. 
+ 
+2.3 PROPOSED SYSTEM 
+The proposed system, BILLIT – Billing Management System, is designed to overcome 
+the limitations of the existing manual and semi-digital billing systems by providing a fully 
+automated, web -based solution. The system aims to stream line and modernize billing 
+operations by integrating advanced technologies that ensure efficiency, accuracy, and 
+reliability. By replacing traditional methods with a centralized digital platform, BILLIT 
+enables businesses to perform billing tasks in a fast er, more organized, and error -free 
+manner. The system provides a user-friendly interface that allows users to easily generate 
+invoices, manage customer details, maintain product information, and perform billing 
+operations with minimal effort and technical knowledge. 
+The application incorporates automation in key areas such as calculation of total amounts, 
+application of taxes like GST, and handling of discounts. These automated processes 
+significantly reduce the chances of human error and ensure consistency  in billing. 
+Additionally, the system is designed to handle real-time data processing, allowing users to 
+instantly generate accurate invoices and view transaction details without delays. This not 
+only improves operational efficiency but also enhances customer satisfaction by providing 
+quick and reliable billing services. 
+Overall, the proposed BILLIT system provides a scalable, secure, and efficient solution for 
+modern billing requirements, making it highly suitable for small and medium -sized 
+businesses seek ing to improve their operational performance and data management 
+practices. 
+ 
+2.4 ADVANTAGES OF PROPOSED SYSTEM 
+The BILLIT system offers several advantages over traditional billing methods: 
+• Improved accuracy through automated calculations 
+• Faster billing process and time efficiency 
+• Secure storage of data in a database 
+• Easy retrieval and management of records 
+• Reduced paperwork and manual effort 
+• User-friendly interface for easy operation 
+
+===== PAGE 15 =====
+12 
+ 
+ 
+ 
+ 
+ 
+ 
+CHAPTER – 3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 16 =====
+13 
+ 
+SYSTEM DESIGN AND DEVELOPMENT 
+ 
+The System Design and Development phase is a critical stage in the development of the 
+BILLIT – Billing Management System , as it transforms the requirements identified 
+during the system study into a structured, functional, and efficient software solution. T his 
+phase focuses on defining the system architecture, organizing components, and 
+implementing features that ensure accuracy, scalability, and secure data handling within 
+the billing process. 
+This chapter provides a comprehensive overview of both the struc tural and logical design 
+of the BILLIT system. The structural design defines how the major components of the 
+system—such as the frontend, backend, and database —are organized and interact with 
+each other. It ensures that the application follows a modular and maintainable architecture, 
+allowing easy updates, debugging, and future enhancements. The logical design focuses on 
+how data flows within the system, how user inputs are processed, and how billing 
+operations such as invoice generation and calculations are executed efficiently. 
+A key aspect of this phase is the organization of the source code, which follows a clear 
+separation of concerns based on Django’s Model-View-Template (MVT) architecture. The 
+system is divided into models for database handling, views  for business logic, and 
+templates for user interface design. This separation improves code readability, 
+maintainability, and scalability, making it easier to implement features such as invoice 
+generation, customer management, and product handling. 
+The cha pter also highlights the design of user input interfaces, which are essential for 
+capturing and validating billing data. The system provides structured forms for operations 
+such as entering customer details, adding products, specifying quantities, and gene rating 
+invoices. These forms are designed to be simple, user-friendly, and efficient, ensuring that 
+users can interact with the system without difficulty. Proper validation techniques are 
+implemented to ensure data accuracy and prevent incorrect inputs. 
+Another important component of this phase is the database design, which forms the 
+backbone of the BILLIT system. The application uses MySQL as the database management 
+system to store customer data, product details, and invoice records in a structured manner. 
+The database is designed with proper relationships and constraints to maintain data 
+integrity and ensure efficient data retrieval. 
+In addition to design, this chapter also covers the development process, which includes 
+implementing various modules, integrating frontend and backend components, and testing 
+system functionalities. The development follows a modular approach, where each feature 
+is built, tested, and integrated step by step, ensuring high-quality output and minimal errors. 
+
+===== PAGE 17 =====
+14 
+ 
+Furthermore, modern development tools and practices such as version control, debugging, 
+and deployment techniques are used to enhance the development workflow. These 
+practices ensure that the system is reliable, secure, and ready for real-world usage. 
+In conclusion, the System Design and Development phase plays a vital role in transforming 
+the BILLIT concept into a fully functional application. By combining a structured 
+architecture, efficient data handling, and user -friendly design, this phase ensures that the 
+system meets both technical and user requirements effectively. 
+ 
+3.1 FILE DESIGN 
+The BILLIT system follows a structured architecture based on Django’s MVT pattern, 
+ensuring clear separation between different components of the application. 
+•Project Directory:  Contains the ma in Django project configuration files.  
+• App Directory: Handles specific functionalities such as billing, customers, and products. 
+Backend Structure: 
+ Models: Define database tables such as Customer, Product, and Invoice  
+ Views: Contain business logic for processing billing operations  
+ URLs: Manage routing between different pages  
+Frontend Structure: 
+ Templates: HTML files for user interface  
+ Static Files: CSS, JavaScript, and images for design and interaction  
+This modular structure improves maintainability and scalability. 
+ 
+3.2 INPUT DESIGN 
+The input design of BILLIT focuses on capturing accurate billing information through 
+structured forms. 
+The system provides input fields for: 
+ Customer Name  
+ Product Name  
+
+===== PAGE 18 =====
+15 
+ 
+ Quantity  
+ Price  
+ GST and Discount  
+Each input field is validated to ensure correct data entry. Client -side and server -side 
+validations are implemented to prevent invalid or incomplete data submission. The forms 
+are designed to be simple and user -friendly, allowing users to ente r data quickly and 
+efficiently. 
+ 
+3.3 OUTPUT DESIGN 
+The output design ensures that billing information is presented clearly and effectively. 
+• Invoice Display customer name, product list, total amount, GST, and final price 
+• Billing Summary: Provides a clear breakdown of calculations 
+• Confirmation Messages: Displays success or error messages after operations 
+The output is designed to be readable, professional, and suitable for printing or saving. 
+ 
+3.4 DATABASE DESIGN 
+The BILLIT system uses MySQL as a relational database to store and manage data 
+efficiently. 
+Main Tables: 
+ Customer Table  
+ Product Table  
+ Invoice Table  
+Relationships are maintained between tables to ensure data consistency. The database is 
+structured to allow easy insertion, updating, deletion, and retrieval of records. 
+ 
+3.5 SYSTEM DEVELOPMENT 
+The development of BILLIT follows a modular and step-by-step approach to ensure high-
+quality implementation. 
+
+===== PAGE 19 =====
+16 
+ 
+• Development Methodology: Incremental development with testing at each stage 
+• Environment Setup: Python, Django, MySQL, and VS Code 
+• Frontend Development: HTML, CSS, JavaScript for UI design 
+• Backend Development: Django for logic and data processing 
+• Database Integration: MySQL connection using Django ORM 
+• Testing: Functional testing for billing operations 
+ 
+3.5.1 DESCRIPTION OF MODULES 
+The BILLIT system is divided into key modules: 
+1. User Module 
+Handles user interaction with the system. 
+ Enter customer details  
+ Generate invoices  
+2. Product Module 
+Manages product information. 
+ Add product  
+ Update price and quantity  
+3. Billing Module 
+Core module of the system. 
+ Calculate total  
+ Apply GST and discounts  
+ Generate invoice  
+4. Database Module 
+Handles data storage and retrieval. 
+ Store customer and invoice data  
+ Retrieve records when needed 
+ 
+
+===== PAGE 20 =====
+17 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+CHAPTER – 4 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 21 =====
+18 
+ 
+TESTING AND IMPLEMENTATION 
+ 
+Testing is a crucial phase in the development of the BILLIT – Billing Management System, 
+as it ensures that all components of the system function correctly, efficiently, and securely. 
+This phase focuses on verifying that the application meets the specified  requirements and 
+performs reliably under different conditions. It involves systematically evaluating user 
+inputs, backend processing, database operations, and overall system behavior to ensure that 
+the application operates without errors. 
+In the BILLIT system, testing plays an important role in validating the interaction between 
+the frontend interface and the backend logic implemented using Django. Each 
+functionality, such as invoice generation, customer data entry, product handling, and billing 
+calculations, is tested to ensure accurate results. Special attention is given to calculation 
+processes, including total amount, GST, and discount handling, to ensure correctness and 
+consistency. 
+Database testing is another essential aspect, where operations such as  data insertion, 
+updating, deletion, and retrieval are verified for accuracy and reliability. The system 
+ensures that all data entered is properly validated before being stored in the MySQL 
+database, preventing invalid or incomplete records. Various edge c ases and unexpected 
+inputs are also tested to evaluate how the system handles errors and maintains stability. 
+After deployment, basic performance checks are conducted to ensure that the system runs 
+efficiently in real-world conditions. Any issues identified during this stage are corrected to 
+maintain reliability and user satisfaction. Overall, the Testing and Implementation phase 
+ensures that the BILLIT system is stable, accurate, and ready for practical use. 
+ 
+4.1 SYSTEM TESTING 
+The BILLIT system is tested thoroughly to ensure that all functionalities work as expected 
+and provide accurate results. 
+• Unit Testing: Individual components such as billing calculations, data input forms, and 
+database operations are tested separately. 
+• Input Validation Testing: Ensures that all user inputs such as customer name, product 
+details, and quantity are valid and correctly processed. 
+• Calculation Testing : Verifies the correctness of total amount, GST, and discount 
+calculations. 
+
+===== PAGE 22 =====
+19 
+ 
+• Database Testing: Ensures proper storage, retrieval, updating, and deletion of records in 
+the MySQL database. 
+• Error Handling Testing : Checks how the system responds to invalid inputs or 
+unexpected conditions. 
+• Integration Testing : Ensures smooth interaction between frontend, backend, and 
+database components. 
+ 
+4.2 IMPLEMENTATION 
+The implementation phase involves deploying the fully developed and tested BILLIT 
+system from the development environment to a working environment where it can be 
+accessed and used efficiently. 
+The implementation process includes the following steps: 
+• Backend Setup: The backend developed using Django is configured and run on a local 
+server or deployed on a hosting platform. It handles data processing, business logic, and 
+communication with the database. 
+• Database Integration: The MySQL database is connected to the Django application 
+using Django ORM. All tables such as customer, product, and invoice are created and 
+managed efficiently. 
+• Frontend Integration: The frontend developed using HTML, CSS, and JavaScript is 
+connected with the backend to ensure smooth data flow and user interaction. 
+• System Deployment : The application can be deployed on platforms such as 
+PythonAnywhere or Render, making it accessible through a web browser. 
+• Testing After Deployment : Final testing is performed to ensure that all features work 
+correctly in the live environment. 
+ 
+In conclusion, the Testing and Implementation phase ensures that the BILLIT system is 
+reliable, efficient, and ready for real -world usage. By thoroughly testing all componen ts 
+and properly deploying the system, the application provides a smooth and accurate billing 
+experience. 
+ 
+ 
+
+===== PAGE 23 =====
+20 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+CHAPTER – 5 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 24 =====
+21 
+ 
+CONCLUSION 
+ 
+The development of BILLIT – Billing Management System successfully addresses the 
+need for an efficient, accurate, and automated billing solution for small and medium-sized 
+businesses. In traditional environments where billing operations are performed manually 
+or using basic tools such as spreadsheets, the la ck of automation often leads to errors, 
+delays, and difficulties in managing large volumes of data. BILLIT effectively overcomes 
+these challenges by providing a centralized, web -based platform that simplifies and 
+streamlines billing activities. 
+By transitioning from manual and paper-based systems to a digital solution, the application 
+ensures improved accuracy, faster processing, and better data management. All billing 
+operations, including invoice generation, customer management, and product handling, are 
+integrated into a single system, eliminating redundancy and reducing the chances of errors. 
+This centralized approach enhances transparency and allows users to access and manage 
+data efficiently at any time. 
+One of the key strengths of BILLIT lies in its a utomated calculation capabilities, which 
+handle totals, GST, and discounts with precision. This not only minimizes human errors 
+but also ensures consistency in billing operations. Additionally, the use of a structured 
+MySQL database ensures secure storage and easy retrieval of data, improving reliability 
+and maintaining data integrity. 
+The system is developed using modern web technologies such as Django, HTML, CSS, 
+and JavaScript, which provide a strong foundation for building scalable and user -friendly 
+applications. The integration of frontend and backend components demonstrates the 
+practical application of full -stack development concepts. The system’s modular design 
+allows for easy maintenance and future enhancements, making it adaptable to evolving 
+business needs. 
+Furthermore, the implementation of validation mechanisms and structured workflows 
+ensures that only accurate and complete data is processed by the system. This enhances 
+overall system performance and user confidence. The application also reduces paperwork 
+and manual effort, thereby improving productivity and operational efficiency. 
+In conclusion, the BILLIT – Billing Management System serves as a reliable, efficient, and 
+scalable solution for modern billing requirements. It not only improves the a ccuracy and 
+speed of billing operations but also provides a strong foundation for future improvements 
+such as report generation, mobile access, and online payment integration. 
+ 
+
+===== PAGE 25 =====
+22 
+ 
+ 
+5.1 FUTURE ENHANCEMENTS 
+The BILLIT system can be further improved by incorporating advanced features to 
+enhance functionality and user experience: 
+• Report Generation:  Implementation of detailed reports such as daily, monthly, and 
+yearly billing summaries for better analysis and decision-making. 
+• Online Payment Integration : Integration with payment gateways to enable digital 
+transactions and cashless billing. 
+• Mobile Application Support:  Development of a mobile -friendly version or dedicated 
+mobile application for easy access. 
+• User Authentication System:  Adding secure log in and role-based access for different 
+users such as admin and staff. 
+• Cloud Deployment:  Hosting the application on cloud platforms to ensure global 
+accessibility and scalability. 
+• Invoice PDF Generation: Allowing users to download and print invoices in PDF format. 
+• Advanced Search and Filtering:  Enabling users to quickly search and filter records 
+based on customer name, date, or invoice number. 
+ 
+BIBLIOGRAPHY 
+1. Django Documentation – https://docs.djangoproject.com/  
+2. MySQL Documentation – https://dev.mysql.com/doc/  
+3. W3Schools – HTML, CSS, JavaScript Tutorials  
+4. MDN Web Docs – https://developer.mozilla.org/  
+5. Python Documentation – https://www.python.org/doc/  
+ 
+ 
+ 
+
+===== PAGE 26 =====
+23 
+ 
+APPENDICES 
+The appendices section provides additional technical details that support the overall 
+understanding of the BILLIT system. It includes diagrams, database structures, and sample 
+code used in the project. 
+This section may contain: 
+ Data Flow Diagram (DFD)  
+ Database Table Structure  
+ Code Snippets 
+  Screenshots  
+  
+These elements help in understanding how the system processes data and implements 
+billing functionalities effectively. 
+ 
+ 
+DATA FLOW DIAGRAM (DFD) 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 27 =====
+24 
+ 
+DATABASE TABLE STRUCTURE 
+INVOICE_COMPANYSETTINGS: 
+ 
+ 
+ 
+INVOICE_CUSTOMER: 
+ 
+ 
+ 
+ 
+ 
+INVOICES_INVOICE: 
+ 
+ 
+ 
+ 
+INVOICES_INVOICEPRODUCT: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 28 =====
+25 
+ 
+ 
+INVOICE_PRODUCT: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+CODE SNIPPETS 
+DASHBOARD.HTML: 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Dashboard - BillIt</title> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+rel="stylesheet"> 
+    <link rel="stylesheet" href="/static/css/style.css?v=3.0"> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head> 
+<body> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4"> 
+        <div class="container-fluid"> 
+
+
+===== PAGE 29 =====
+26 
+ 
+            <a class="navbar-brand" href="/">BillIt</a> 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-
+target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> 
+                <span class="navbar-toggler-icon"></span> 
+            </button> 
+            <div class="collapse navbar-collapse" id="navbarNav"> 
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+                    <li class="nav-item"> 
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" 
+href="/">Dashboard</a> 
+                    </li> 
+                    <li class="nav-item"> 
+                        <a class="nav-link {% if request.path == '/invoices/create/' %}active{% endif %}" 
+                            href="/invoices/create/">New Invoice</a> 
+                    </li> 
+                    <li class="nav-item"> 
+                        <a class="nav-link {% if request.path == '/invoices/' %}active{% endif %}" 
+href="/invoices/">Old 
+                            Invoice</a> 
+                    </li> 
+                    <li class="nav-item"> 
+                        <a class="nav-link {% if request.path == '/products/' %}active{% endif %}" 
+                            href="/products/">Products</a> 
+                    </li> 
+                </ul> 
+                <span class="navbar-text me-3 text-light fw-bold"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+fill="currentColor" 
+                        class="bi bi-person-circle me-1" viewBox="0 0 16 16"> 
+
+===== PAGE 30 =====
+27 
+ 
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" /> 
+                        <path fill-rule="evenodd" 
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 
+11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" /> 
+                    </svg> 
+                    {{ request.user.username|default:"Admin" }} 
+                </span> 
+                <button id="themeToggle" class="btn btn-outline-light me-2" type="button">Toggle 
+Theme</button> 
+                <a href="/logout/" class="btn btn-outline-light">Logout</a> 
+            </div> 
+        </div> 
+    </nav> 
+    <script> 
+        // Simple dark/light theme toggle 
+        document.addEventListener('DOMContentLoaded', function () { 
+            const themeToggle = document.getElementById('themeToggle'); 
+            const body = document.body; 
+            function setTheme(theme) { 
+                if (theme === 'dark') { 
+                    body.classList.add('dark-theme'); 
+                    localStorage.setItem('theme', 'dark'); 
+                } else { 
+                    body.classList.remove('dark-theme'); 
+                    localStorage.setItem('theme', 'light'); 
+                }         } 
+            themeToggle.addEventListener('click', function () { 
+                if (body.classList.contains('dark-theme')) { 
+                    setTheme('light'); 
+
+===== PAGE 31 =====
+28 
+ 
+                } else { 
+                    setTheme('dark'); 
+                } 
+            }); 
+            // On load 
+            setTheme(localStorage.getItem('theme') || 'light'); 
+        }); 
+    </script> 
+    <div class="container mt-2"> 
+        <!-- Welcome Message --> 
+        <div class="d-flex justify-content-between align-items-center mb-4"> 
+            <h2 class="mb-0 fw-bold">Dashboard Overview</h2> 
+            <div> 
+                <span class="text-muted" id="currentDate"></span> 
+            </div> 
+        </div> 
+        <!-- Summary Cards Row --> 
+        <div class="row mb-4 g-4"> 
+            <div class="col-md-4"> 
+                <div class="card h-100 summary-card bg-primary-gradient text-white border-0 
+shadow-sm"> 
+                    <div class="card-body position-relative overflow-hidden"> 
+                        <h6 class="card-title text-uppercase fw-semibold mb-2 opacity-75">Total 
+Invoices</h6> 
+                        <h2 class="display-5 fw-bold mb-0">{{ total_invoices }}</h2> 
+                        <div class="card-icon position-absolute opacity-25"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" 
+fill="currentColor" 
+                                class="bi bi-receipt" viewBox="0 0 16 16"> 
+                                <path 
+
+===== PAGE 32 =====
+29 
+ 
+                                    d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 
+646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" /> 
+                                <path  d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 
+0 0 1-.5-.5z" /> 
+                            </svg> 
+                        </div> </div> 
+                </div> 
+            </div> 
+            <div class="col-md-4"> 
+                <div class="card h-100 summary-card bg-success-gradient text-white border-0 shadow-
+sm"> 
+                    <div class="card-body position-relative overflow-hidden"> 
+                        <h6 class="card-title text-uppercase fw-semibold mb-2 opacity-75">Total 
+Sales</h6> 
+                        <h2 class="display-5 fw-bold mb-0">₹{{ total_sales }}</h2> 
+                        <div class="card-icon position-absolute opacity-25"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" 
+fill="currentColor" 
+                                class="bi bi-currency-rupee" viewBox="0 0 16 16"> 
+                                <path 
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 
+3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" /> 
+                            </svg> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+            <div class="col-md-4"> 
+                <div class="card h-100 summary-card bg-info-gradient text-white border-0 shadow-
+sm"> 
+                    <div class="card-body position-relative overflow-hidden"> 
+
+===== PAGE 33 =====
+30 
+ 
+                        <h6 class="card-title text-uppercase fw-semibold mb-2 opacity-75">Today's 
+Invoices</h6> 
+                        <h2 class="display-5 fw-bold mb-0">{{ todays_invoices }}</h2> 
+                        <div class="card-icon position-absolute opacity-25"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" 
+fill="currentColor" 
+                                class="bi bi-calendar-check" viewBox="0 0 16 16"> 
+                                <path 
+                                    d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 
+1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" /> 
+                                <path 
+                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 
+2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 
+1 0 0 0 1-1V4H1z" /> 
+                            </svg> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+        <div class="row g-4"> 
+            <!-- Left Column: Quick Actions --> 
+            <div class="col-md-4 order-md-2"> 
+                <div class="card border-0 shadow-sm mb-4"> 
+                    <div class="card-header bg-transparent border-0 pt-4 pb-0"> 
+                        <h5 class="fw-bold mb-0">Quick Actions</h5> 
+                    </div> 
+                    <div class="card-body"> 
+                        <div class="d-grid gap-3"> 
+                            <a href="/invoices/create/" 
+
+===== PAGE 34 =====
+31 
+ 
+                                class="btn btn-primary btn-lg d-flex align-items-center justify-content-center 
+text-white action-btn shadow-sm"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+fill="currentColor" 
+                                    class="bi bi-plus-circle me-2" viewBox="0 0 16 16"> 
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 
+0 0 16z" /> 
+                                    <path 
+                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-
+3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" /> 
+                                </svg> 
+                                Create New Invoice 
+                            </a> 
+                            <a href="/invoices/" 
+                                class="btn btn-outline-primary btn-lg d-flex align-items-center justify-
+content-center action-btn"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+fill="currentColor" 
+                                    class="bi bi-archive me-2" viewBox="0 0 16 16"> 
+                                    <path 
+                                        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 
+1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 
+0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-
+.5z" /> 
+                                </svg> 
+                                View All Invoices 
+                            </a> 
+                            <a href="/products/" 
+                                class="btn btn-outline-success btn-lg d-flex align-items-center justify-
+content-center action-btn"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+fill="currentColor" 
+                                    class="bi bi-box-seam me-2" viewBox="0 0 16 16"> 
+
+===== PAGE 35 =====
+32 
+ 
+                                    <path 
+                                        d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-
+2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-
+2.6V4.24zM7.5 14.762V6.84l-6.5-2.6v7.922l6.5 2.6zM5.22 8.5h-.001a.5.5 0 0 0-.495.547l.427 
+4.275a.5.5 0 0 0 .996-.1l-.403-4.025a.5.5 0 0 0-.525-.697zm4.56 0h-.001a.5.5 0 0 0-.525.697l-
+.403 4.025a.5.5 0 0 0 .996.1l.427-4.275a.5.5 0 0 0-.495-.547z" /> 
+                                </svg> 
+                                Manage Products 
+                            </a> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+            <!-- Right Column: Recent Invoices --> 
+            <div class="col-md-8 order-md-1"> 
+                <div class="card border-0 shadow-sm mb-4"> 
+                    <div 
+                        class="card-header bg-transparent border-0 pt-4 pb-0 d-flex justify-content-
+between align-items-center"> 
+                        <h5 class="fw-bold mb-0">Recent Invoices</h5> 
+                        <a href="/invoices/" class="btn btn-sm btn-link text-decoration-none px-0">View 
+All →</a> 
+                    </div> 
+                    <div class="card-body"> 
+                        <div class="table-responsive"> 
+                            <table class="table table-hover align-middle mb-0"> 
+                                <thead class="table-light"> 
+                                    <tr> 
+                                        <th class="border-0 rounded-start">Invoice #</th> 
+                                        <th class="border-0">Date</th> 
+                                        <th class="border-0">Customer</th> 
+
+===== PAGE 36 =====
+33 
+ 
+                                        <th class="border-0 text-end rounded-end">Total</th> 
+                                    </tr> 
+                                </thead> 
+                                <tbody> 
+                                    {% for invoice in recent_invoices %} 
+                                    <tr class="modern-row" onclick="window.location='/invoices/{{ 
+invoice.pk }}/'"> 
+                                        <td><span class="fw-semibold text-primary">#{{ 
+invoice.invoice_number }}</span> 
+                                        </td> 
+                                        <td class="text-muted">{{ invoice.date }}</td> 
+                                        <td class="fw-medium">{{ invoice.customer.name }}</td> 
+                                        <td class="text-end fw-bold">₹{{ invoice.total }}</td> 
+                                    </tr> 
+                                    {% empty %} 
+                                    <tr> 
+                                        <td colspan="4" class="text-center py-4 text-muted">No recent invoices 
+found. 
+                                        </td> 
+                                    </tr> 
+                                    {% endfor %} 
+                                </tbody> 
+                            </table> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div>  </div>  </div> 
+    <style> 
+        /* Modern Premium Dashboard Styles */ 
+        .summary-card { 
+
+===== PAGE 37 =====
+34 
+ 
+            border-radius: 1rem; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        } 
+        .summary-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important; 
+        } 
+        .bg-primary-gradient { 
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
+        } 
+        .bg-success-gradient { 
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); 
+        } 
+        .bg-info-gradient { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+        } 
+.mobile-bottom-nav { 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 65px; 
+    background: #ffffff; 
+    box-shadow: 0 -2px 15px rgba(0,0,0,0.05); 
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+    z-index: 1040; 
+} 
+
+===== PAGE 38 =====
+35 
+ 
+.dark-theme .mobile-bottom-nav { 
+    background: #18213a; 
+    border-top: 1px solid rgba(255,255,255,0.05); 
+} 
+.mobile-bottom-nav a { 
+    color: #6c757d; 
+    text-decoration: none; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    font-size: 0.75rem; 
+    font-weight: 500; 
+} 
+.dark-theme .mobile-bottom-nav a { 
+    color: #8b9eb7; 
+} 
+.mobile-bottom-nav a.active { 
+    color: #007bff; 
+} 
+.dark-theme .mobile-bottom-nav a.active { 
+    color: #4fc3f7; 
+} 
+.mobile-bottom-nav a svg { 
+    margin-bottom: 4px; 
+} 
+</style> 
+<div class="mobile-top-header d-lg-none d-flex justify-content-between align-items-center px-
+3"> 
+    <h4 class="m-0 text-white fw-bold">BillIt</h4> 
+
+===== PAGE 39 =====
+36 
+ 
+    <div> 
+        <button id="mobileThemeToggle" class="btn btn-sm btn-outline-light me-1" style="border: 
+none;"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" 
+class="bi bi-moon-stars" viewBox="0 0 16 16"> 
+              <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 
+3.278.124.06A.752.752 0 0 1 6 .278z"/> 
+            </svg> 
+        </button> 
+        <a href="/logout/" class="btn btn-sm btn-light text-primary fw-bold">Logout</a> 
+    </div> 
+</div> 
+<div class="mobile-bottom-nav d-lg-none"> 
+    <a href="/" class="{% if request.path == '/' %}active{% endif %}"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" 
+class="bi bi-house" viewBox="0 0 16 16"><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 
+8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-
+1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-
+.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/></svg> 
+        Home 
+    </a> 
+    <a href="/invoices/create/" class="{% if request.path == '/invoices/create/' %}active{% endif 
+%}"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" 
+class="bi bi-plus-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 
+14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-
+3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg> 
+        New 
+    </a> 
+    <a href="/invoices/" class="{% if request.path == '/invoices/' %}active{% endif %}"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" 
+class="bi bi-receipt" viewBox="0 0 16 16"><path d="M1.92.506a.5.5 0 0 1 .434.14L3 
+1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293..."></path><path d="M1.92.506a.5.5 0 0 1 .434.14L3 
+646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/></svg> 
+        History 
+
+===== PAGE 40 =====
+37 
+ 
+    </a> 
+    <a href="/products/" class="{% if request.path == '/products/' %}active{% endif %}"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" 
+class="bi bi-box-seam" viewBox="0 0 16 16"><path d="M8.186 1.113a.5.5 0 0 0-.372 0 0-.495-
+.547z"/></svg> 
+        Products 
+    </a> 
+</div> 
+<script> 
+document.addEventListener('DOMContentLoaded', function() { 
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle'); 
+    if (mobileThemeToggle) { 
+        mobileThemeToggle.addEventListener('click', function() { 
+             
+                localStorage.setItem('theme', 'light'); 
+            } else { 
+                body.classList.add('dark-theme'); 
+                localStorage.setItem('theme', 'dark'); 
+            } 
+        }); 
+}); 
+</script> 
+</body> 
+</html> 
+ 
+VIEWS.PY: 
+from django.shortcuts import render, redirect, get_object_or_404 
+from django.contrib.auth import authenticate, login, logout 
+from django.contrib.auth.decorators import login_required 
+
+===== PAGE 41 =====
+38 
+ 
+from django.contrib import messages 
+from django.db.models import Sum, Count, Q 
+from django.utils import timezone 
+from django.http import HttpResponse, JsonResponse 
+from .models import Customer, Product, Invoice, InvoiceProduct, CompanySettings 
+from .forms import CustomerForm, ProductForm, InvoiceForm, InvoiceProductForm 
+import datetime 
+@login_required 
+def products(request): 
+    if request.method == 'POST': 
+        name = request.POST.get('name') 
+        price = request.POST.get('price') 
+        if name and price: 
+            Product.objects.get_or_create(name=name, defaults={'price': price}) 
+    products = Product.objects.all() 
+    return render(request, 'products.html', {'products': products}) 
+from django.views.decorators.http import require_GET 
+@login_required 
+@require_GET 
+def customer_autocomplete(request): 
+    q = request.GET.get('q', '') 
+    customers = Customer.objects.filter(Q(phone__icontains=q) | Q(name__icontains=q))[:10] 
+    data = {'customers': [{'name': c.name, 'phone': c.phone} for c in customers]} 
+    return JsonResponse(data) 
+@login_required 
+def product_autocomplete(request): 
+
+===== PAGE 42 =====
+39 
+ 
+    q = request.GET.get('q', '') 
+    products = Product.objects.filter(name__icontains=q)[:10] 
+    data = {'products': [{'name': p.name, 'price': str(p.price)} for p in products]} 
+    return JsonResponse(data) 
+def login_view(request): 
+    if request.user.is_authenticated: 
+        return redirect('dashboard') 
+    if request.method == 'POST': 
+        username = request.POST['username'] 
+        password = request.POST['password'] 
+        user = authenticate(request, username=username, password=password) 
+        if user is not None: 
+            login(request, user) 
+            return redirect('dashboard') 
+        else: 
+            messages.error(request, 'Invalid username or password') 
+    return render(request, 'login.html') 
+def logout_view(request): 
+    logout(request) 
+    return redirect('login') 
+@login_required 
+def dashboard(request): 
+    today = timezone.now().date() 
+    total_invoices = Invoice.objects.count() 
+    total_sales = Invoice.objects.aggregate(s=Sum('total'))['s'] or 0 
+    todays_invoices = Invoice.objects.filter(date=today).count() 
+
+===== PAGE 43 =====
+40 
+ 
+    current_year = today.year 
+    monthly_sales = [ 
+        Invoice.objects.filter(date__year=current_year, 
+date__month=m).aggregate(s=Sum('total'))['s'] or 0 
+        for m in range(1, 13)    ] 
+    recent_invoices = Invoice.objects.select_related('customer').order_by('-date', '-id')[:5] 
+    context = { 
+        'total_invoices': total_invoices, 
+        'total_sales': total_sales, 
+        'todays_invoices': todays_invoices, 
+        'monthly_sales': monthly_sales, 
+        'recent_invoices': recent_invoices,    } 
+    return render(request, 'dashboard.html', context) 
+@login_required 
+def invoice_list(request): 
+    query = request.GET.get('q', '') 
+    invoices = Invoice.objects.all().order_by('-date', '-id') 
+    if query: 
+        invoices = invoices.filter( 
+            Q(customer__name__icontains=query) | 
+            Q(customer__phone__icontains=query) | 
+            Q(date__icontains=query)       ) 
+    return render(request, 'invoice_list.html', {'invoices': invoices, 'query': query}) 
+@login_required 
+def create_invoice(request): 
+    today = timezone.now().date() 
+    date_str = today.strftime('%Y%m%d') 
+
+===== PAGE 44 =====
+41 
+ 
+    last_invoice = Invoice.objects.filter(date=today).order_by('-invoice_number').first() 
+    if last_invoice: 
+        last_num = int(last_invoice.invoice_number.split('-')[-1]) 
+        next_num = last_num + 1 
+    else: 
+        next_num = 1 
+    invoice_number = f"{date_str}-{next_num:03d}" 
+    if request.method == 'POST': 
+        customer_name = request.POST.get('customer_name') 
+        phone = request.POST.get('phone') 
+        customer, _ = Customer.objects.get_or_create(name=customer_name, phone=phone) 
+        gst_enabled = bool(request.POST.get('gst_enabled')) 
+        discount_type = request.POST.get('discount_type') 
+        discount_value = float(request.POST.get('discount_value') or 0) 
+        subtotal = float(request.POST.get('subtotal') or 0) 
+        gst_amount = float(request.POST.get('gst_amount') or 0) 
+        total = float(request.POST.get('grand_total') or 0) 
+        invoice = Invoice.objects.create( 
+            customer=customer, 
+            user=request.user, 
+            date=today, 
+            invoice_number=invoice_number, 
+            gst_enabled=gst_enabled, 
+            discount_type=discount_type, 
+            discount_value=discount_value, 
+            subtotal=subtotal, 
+
+===== PAGE 45 =====
+42 
+ 
+            gst_amount=gst_amount, 
+            total=total,    ) 
+        names = request.POST.getlist('product_name[]') 
+        prices = request.POST.getlist('product_price[]') 
+        quantities = request.POST.getlist('product_quantity[]') 
+        totals = request.POST.getlist('product_total[]') 
+        for name, price, qty, total in zip(names, prices, quantities, totals): 
+            InvoiceProduct.objects.create( 
+                invoice=invoice, 
+                name=name, 
+                price=price, 
+                quantity=qty, 
+                total=total      ) 
+        messages.success(request, 'Invoice created successfully!') 
+        return redirect('invoice_detail', pk=invoice.pk) 
+    context = { 
+        'today': today, 
+        'invoice_number': invoice_number,    } 
+    return render(request, 'create_invoice.html', context) 
+def invoice_detail(request, pk): 
+    invoice = get_object_or_404(Invoice, pk=pk) 
+    company = CompanySettings.objects.first() 
+    return render(request, 'invoice_detail.html', {'invoice': invoice, 'company': company}) 
+@login_required 
+def edit_invoice(request, pk): 
+    return render(request, 'edit_invoice.html') 
+
+===== PAGE 46 =====
+43 
+ 
+@login_required 
+def delete_invoice(request, pk): 
+    invoice = get_object_or_404(Invoice, pk=pk) 
+    if request.method == 'POST': 
+        invoice.delete() 
+        messages.success(request, 'Invoice deleted successfully.') 
+        return redirect('invoice_list') 
+    return render(request, 'delete_invoice.html', {'invoice': invoice}) 
+def invoice_pdf(request, pk): 
+    return HttpResponse('PDF generation not implemented yet.') 
+@login_required 
+def invoice_print(request, pk): 
+    return HttpResponse('Print view not implemented yet.') 
+@login_required 
+def invoice_whatsapp(request, pk): 
+    return HttpResponse('WhatsApp share not implemented yet.') 
+ 
+URLS.PY:  
+ 
+from django.urls import path 
+from . import views 
+from django.urls import path 
+from . import views 
+urlpatterns = [ 
+    path('', views.dashboard, name='dashboard'), 
+    path('login/', views.login_view, name='login'), 
+
+===== PAGE 47 =====
+44 
+ 
+    path('logout/', views.logout_view, name='logout'), 
+    path('invoices/', views.invoice_list, name='invoice_list'), 
+    path('invoices/create/', views.create_invoice, name='create_invoice'), 
+    path('invoices/<int:pk>/', views.invoice_detail, name='invoice_detail'), 
+    path('invoices/<int:pk>/edit/', views.edit_invoice, name='edit_invoice'), 
+    path('invoices/<int:pk>/delete/', views.delete_invoice, name='delete_invoice'), 
+    path('invoices/<int:pk>/pdf/', views.invoice_pdf, name='invoice_pdf'), 
+    path('invoices/<int:pk>/print/', views.invoice_print, name='invoice_print'), 
+    path('invoices/<int:pk>/whatsapp/', views.invoice_whatsapp, name='invoice_whatsapp'), 
+    path('products/autocomplete/', views.product_autocompletename='product_autocomplete'), 
+    path('products/', views.products, name='products'), 
+    path('customers/autocomplete/', views.customer_autocomplete         
+name='customer_autocomplete'), 
+DATABASE 
+Moduls.py: 
+ 
+from django.db import models 
+from django.contrib.auth.models import User 
+from django.utils import timezone 
+class CompanySettings(models.Model): 
+    company_name = models.CharField(max_length=255, default="BillIt Inc.") 
+    company_address = models.TextField(blank=True, null=True) 
+    company_phone = models.CharField(max_length=20, blank=True, null=True) 
+    company_email = models.EmailField(blank=True, null=True) 
+    gst_number = models.CharField(max_length=50, blank=True, null=True, help_text="Enter 
+your company's GST Number here") 
+    def __str__(self): 
+
+===== PAGE 48 =====
+45 
+ 
+        return self.company_name 
+    class Meta: 
+        verbose_name_plural = "Company Settings" 
+class Customer(models.Model): 
+    name = models.CharField(max_length=255) 
+    phone = models.CharField(max_length=20, unique=True) 
+    def __str__(self): 
+        return f"{self.name} ({self.phone})" 
+class Product(models.Model): 
+    name = models.CharField(max_length=255) 
+    price = models.DecimalField(max_digits=10, decimal_places=2) 
+    def __str__(self): 
+        return self.name 
+ 
+class Invoice(models.Model): 
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE) 
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 
+    date = models.DateField(default=timezone.now) 
+    invoice_number = models.CharField(max_length=20, unique=True) 
+    gst_enabled = models.BooleanField(default=False) 
+    discount_type = models.CharField(max_length=10, choices=[('percent', 'Percent'), ('amount', 
+'Amount')], default='amount') 
+    discount_value = models.DecimalField(max_digits=10, decimal_places=2, default=0) 
+    subtotal = models.DecimalField(max_digits=12, decimal_places=2) 
+    gst_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0) 
+    total = models.DecimalField(max_digits=12, decimal_places=2) 
+    created_at = models.DateTimeField(auto_now_add=True) 
+
+===== PAGE 49 =====
+46 
+ 
+    def __str__(self): 
+        return self.invoice_number 
+class InvoiceProduct(models.Model): 
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, 
+related_name='products') 
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True) 
+    name = models.CharField(max_length=255) 
+    price = models.DecimalField(max_digits=10, decimal_places=2) 
+    quantity = models.PositiveIntegerField() 
+    total = models.DecimalField(max_digits=12, decimal_places=2) 
+    def __str__(self): 
+ 
+SCREENSHOTS 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 50 =====
+47 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 51 =====
+48 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+===== PAGE 52 =====
+49 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+

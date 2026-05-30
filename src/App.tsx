@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
 import Scan from "./pages/Scan";
+import CameraPage from "./pages/Camera";
 import Results from "./pages/Results";
 import HistoryPage from "./pages/HistoryPage";
 import Profile from "./pages/Profile";
@@ -31,45 +32,61 @@ const App = () => (
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route
-               path="/dashboard"
-               element={
-               <ProtectedRoute>
-               <Dashboard />
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
                 </ProtectedRoute>
               }
             />
             <Route
               path="/scan"
               element={
-              <ProtectedRoute>
-              <Scan/>
-              </ProtectedRoute>
-            }
-          />
+                <ProtectedRoute>
+                  <Scan />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/camera"
+              element={
+                <ProtectedRoute>
+                  <CameraPage />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/results"
               element={
-              <ProtectedRoute>
-              <Results />
-              </ProtectedRoute>
-            }
-          />
+                <ProtectedRoute>
+                  <Results />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/results/:id"
+              element={
+                <ProtectedRoute>
+                  <Results />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/history"
               element={
-              <ProtectedRoute>
-              <HistoryPage />
-              </ProtectedRoute>
-            }
-          />
+                <ProtectedRoute>
+                  <HistoryPage />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/profile"
               element={
-              <ProtectedRoute>
-              <Profile/>
-              </ProtectedRoute>
-            }
-          />
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
