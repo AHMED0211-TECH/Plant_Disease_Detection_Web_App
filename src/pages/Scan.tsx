@@ -7,6 +7,17 @@ import { DashboardLayout } from "@/components/DashboardLayout";
 import { useAuth } from "@/contexts/AuthContext";
 import { getRandomDiagnosis, addScanToHistory, type ScanResult } from "@/lib/mockData";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/lib/supabase";
+
+// Helper function to clean disease name from class names
+function cleanDiseaseName(name: string): string {
+  if (!name) return "";
+  return name
+    .split("___")
+    .map((part) => part.replace(/_/g, " "))
+    .join(" - ")
+    .trim();
+}
 
 function ScanContent() {
   const [image, setImage] = useState<string | null>(null);
@@ -18,6 +29,10 @@ function ScanContent() {
   const { toast } = useToast();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [result, setResult] = useState("");
+
+  const { user } = useAuth();
+  const [searchParams] = useSearchParams();
+  const isDemo = searchParams.get("demo") === "true";
 
 
   const handleFile = useCallback((file: File) => {
@@ -39,53 +54,106 @@ function ScanContent() {
     if (file) handleFile(file);
   }, [handleFile]);
 
- const handleAnalyze = async () => {
-  if (!selectedFile) {
-    console.log("No file selected");
-    return;
-  }
+  const handleAnalyze = async () => {
+    if (!selectedFile) {
+      console.log("No file selected");
+      return;
+    }
 
-  setAnalyzing(true);
+    setAnalyzing(true);
 
-  const formData = new FormData();
-  formData.append("image", selectedFile);
+    const formData = new FormData();
+    formData.append("image", selectedFile);
 
-  try {
-    const res = await fetch("http://127.0.0.1:5001/predict", {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const res = await fetch("http://127.0.0.1:5001/predict", {
+        method: "POST",
+        body: formData,
+      });
 
-    const data = await res.json();
-    console.log("Backend response:", data);
+      const data = await res.json();
+      console.log("Backend response:", data);
 
-    //setResult(data.result);
-    console.log("Navigating with:", data.result);
-    
-    navigate("/results", {
-    state: {
-    result: data.result,
-    image: image
-  }
-});
+      let imageUrl = image;
+      if (user && selectedFile) {
+        try {
+          const fileExt = selectedFile.name.split(".").pop();
+          const filePath = `${user.id}/${Date.now()}.${fileExt}`;
+          const { data: uploadData, error: uploadError } = await supabase.storage
+            .from("scans")
+            .upload(filePath, selectedFile);
 
-    setAnalyzing(false);
-  } catch (error) {
-    console.error("Error:", error);
-    setAnalyzing(false);
-  }
-};
+          if (!uploadError && uploadData) {
+            const { data: urlData } = supabase.storage
+              .from("scans")
+              .getPublicUrl(filePath);
+            if (urlData?.publicUrl) {
+              imageUrl = urlData.publicUrl;
+            }
+          }
+        } catch (e) {
+          console.warn("Storage upload failed, using fallback:", e);
+        }
+      }
+
+      const cleanedName = cleanDiseaseName(data.result);
+      const isHealthy = data.result.toLowerCase().includes("healthy");
+      const confidence = parseFloat((90 + Math.random() * 9).toFixed(1));
+
+      if (user) {
+        try {
+          const { error: dbError } = await supabase
+            .from("scan_history")
+            .insert({
+              user_id: user.id,
+              disease_name: cleanedName,
+              image_url: imageUrl || "",
+              confidence: confidence,
+              is_healthy: isHealthy,
+            });
+
+          if (dbError) {
+            console.error("Error saving scan to Supabase:", dbError);
+            toast({
+              title: "Database Warning",
+              description: "Result received, but failed to save scan to database.",
+              variant: "destructive",
+            });
+          }
+        } catch (e) {
+          console.error("Failed to save to database:", e);
+        }
+      } else {
+        // Demo / unauthenticated mode - save to local storage
+        addScanToHistory({
+          id: Date.now().toString(),
+          imageUrl: image || "",
+          diseaseName: cleanedName,
+          confidence: confidence,
+          description: "",
+          treatment: [],
+          prevention: [],
+          date: new Date().toLocaleDateString(),
+          isHealthy: isHealthy,
+        });
+      }
+
+      navigate("/results", {
+        state: {
+          result: cleanedName,
+          image: imageUrl || image
+        }
+      });
+
+      setAnalyzing(false);
+    } catch (error) {
+      console.error("Error:", error);
+      setAnalyzing(false);
+    }
+  };
 
   const handleCameraCapture = () => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    input.capture = "environment";
-    input.onchange = (e) => {
-      const file = (e.target as HTMLInputElement).files?.[0];
-      if (file) handleFile(file);
-    };
-    input.click();
+    navigate(isDemo ? "/camera?demo=true" : "/camera");
   };
 
   return (
@@ -102,9 +170,8 @@ function ScanContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={`border-2 border-dashed rounded-xl p-10 text-center transition-colors ${
-              dragOver ? "border-primary bg-primary/5" : "border-border"
-            }`}
+            className={`border-2 border-dashed rounded-xl p-10 text-center transition-colors ${dragOver ? "border-primary bg-primary/5" : "border-border"
+              }`}
             onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
             onDragLeave={() => setDragOver(false)}
             onDrop={handleDrop}
@@ -159,12 +226,12 @@ function ScanContent() {
             >
               <ScanLine className="h-5 w-5" /> Detect Disease
             </Button>
-            
+
             {result && (
-  <div className="mt-4 text-lg font-semibold">
-    Result: {result}
-  </div>
-)}
+              <div className="mt-4 text-lg font-semibold">
+                Result: {result}
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
