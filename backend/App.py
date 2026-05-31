@@ -4,6 +4,7 @@ from PIL import Image
 import torch
 import torchvision.transforms as transforms
 from CNN import CNN
+from huggingface_hub import hf_hub_download
 
 app = Flask(__name__)
 CORS(app)  # allows frontend to connect
@@ -11,7 +12,10 @@ CORS(app)  # allows frontend to connect
 # ----------------------------
 # 🔥 LOAD MODEL
 # ----------------------------
-MODEL_PATH = "plant_disease_model_1_latest.pt"  # make sure this file is in backend folder
+MODEL_PATH = hf_hub_download(
+    repo_id="Shuaib02/leafsense-model",
+    filename="plant_disease_model_1_latest.pt"
+)
 
 device = torch.device("cpu")
 
