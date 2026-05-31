@@ -19,36 +19,42 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // 🔥 Listen to auth changes
   useEffect(() => {
-  // 🔥 Get current session on load
-  const getSession = async () => {
-    const { data } = await supabase.auth.getSession();
-    setUser(data.session?.user ?? null);
-    setLoading(false);
-  };
+    // 🔥 Get current session on load
+    const getSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      setUser(data.session?.user ?? null);
+      setLoading(false);
+    };
 
-  getSession();
+    getSession();
 
-  // 🔥 Listen for auth changes
-  const { data: listener } = supabase.auth.onAuthStateChange(
-    (_event, session) => {
-      setUser(session?.user ?? null);
-    }
-  );
-
-  return () => {
-    listener.subscription.unsubscribe();
-  };
-}, []);
+    // 🔥 Listen for auth changes
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      async (_event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, []);
 
   // 🔐 LOGIN
   const login = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) throw error
 
-    if (error) throw error;
-  };
+    if (data.user?.id) {
+      supabase.from('profiles').upsert({
+        id: data.user.id,
+        name: data.user.user_metadata?.full_name ?? '',
+        bio: '',
+        avatar_url: data.user.user_metadata?.avatar_url ?? '',
+      }).then(({ error }) => {
+        if (error) console.error('Profile upsert failed:', error)
+      })
+    }
+  }
 
   // 🆕 SIGNUP
   const signup = async (email: string, password: string) => {
