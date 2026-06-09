@@ -66,7 +66,7 @@ function ScanContent() {
     formData.append("image", selectedFile);
 
     try {
-      const res = await fetch("http://127.0.0.1:5001/predict", {
+      const res = await fetch("https://shuaib02-leafsense-backend.hf.space/predict", {
         method: "POST",
         body: formData,
       });
