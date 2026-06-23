@@ -183,7 +183,7 @@ export default function CameraPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between overflow-hidden select-none">
+    <div className="relative h-screen bg-slate-950 text-slate-100 flex flex-col justify-between overflow-hidden select-none">
       {/* Background/Ambient glow */}
       <div className="absolute inset-0 bg-radial-gradient from-emerald-950/20 to-transparent pointer-events-none" />
 
@@ -272,13 +272,13 @@ export default function CameraPage() {
               videoConstraints={videoConstraints}
               onUserMedia={handleUserMedia}
               onUserMediaError={handleUserMediaError}
-              className="w-full h-full object-cover max-h-[80vh]"
+              className="w-full h-full object-cover"
             />
 
             {/* Scanning Viewfinder Frame */}
             {hasPermission && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none p-8 z-10">
-                <div className="relative w-72 h-72 md:w-96 md:h-96 border-2 border-dashed border-emerald-500/30 rounded-3xl flex items-center justify-center">
+                <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 border-2 border-dashed border-emerald-500/30 rounded-3xl flex items-center justify-center">
                   {/* Glowing corners */}
                   <div className="absolute -top-1.5 -left-1.5 w-6 h-6 border-t-4 border-l-4 border-emerald-400 rounded-tl-xl" />
                   <div className="absolute -top-1.5 -right-1.5 w-6 h-6 border-t-4 border-r-4 border-emerald-400 rounded-tr-xl" />
@@ -311,7 +311,7 @@ export default function CameraPage() {
             <img
               src={imgSrc}
               alt="Captured plant leaf"
-              className="w-full h-full object-cover max-h-[80vh] bg-slate-900"
+              className="w-full h-full object-cover bg-slate-900"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
           </div>
@@ -319,7 +319,7 @@ export default function CameraPage() {
       </main>
 
       {/* Control Bar */}
-      <footer className="relative z-10 bg-slate-950 px-4 py-8 md:px-8 border-t border-white/5">
+      <footer className="relative z-10 bg-slate-950 px-4 py-8 md:px-8 border-t border-white/5 safe-area-bottom">
         <div className="max-w-md mx-auto flex items-center justify-around">
           {!imgSrc ? (
             <>

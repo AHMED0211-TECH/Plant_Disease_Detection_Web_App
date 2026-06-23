@@ -161,4 +161,7 @@
     backdrop-filter: blur(12px);
     background: hsl(var(--background) / 0.8);
   }
+  .safe-area-bottom{
+    padding-bottom: env(safe-area-insert-bottom);
+  }
 }
